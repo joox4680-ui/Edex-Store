@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090b16">
+<title>Edex Store | المتجر الرسمي</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="intro" class="intro"><video id="introVideo" autoplay muted playsinline><source src="assets/intro.mp4" type="video/mp4"></video><button id="skipIntro">تخطي المقدمة ←</button></div>
+<div class="bg"></div><div class="shade"></div>
+<header class="topbar"><a class="brand" href="#home"><span class="brand-mark">E</span><span>Edex <b>Store</b></span></a><nav><a href="#services">الخدمات</a><a href="#offers">العروض</a><a href="#reviews">التقييمات</a><a href="#faq">الأسئلة</a></nav><button class="cart-open" id="cartOpen">السلة <span id="cartCount">0</span></button></header>
+<main id="home">
+<section class="hero"><div class="hero-photo"><img src="assets/profile.jpg" alt="صورة صاحب المتجر"></div><div class="hero-copy"><span class="eyebrow">مرحباً بك في عالم Edex</span><h1>اهلا بيك يا محترم في Edex Store ❤️اتفضل و استكشف العروض !</h1><p>اختار خدمتك، جهّز طلبك، وابعت التفاصيل مباشرة على واتساب.</p><a class="primary" href="#services">استكشف الخدمات <span>←</span></a></div></section>
+<section id="services" class="section"><div class="section-head"><div><span class="eyebrow">اختار اللي يناسبك</span><h2>خدمات المتجر</h2></div><p>أسعار الخدمات قابلة للتعديل من لوحة الإدارة.</p></div>
+<div class="cards">
+<article class="service-card"><img class="cover" src="assets/crossfire.webp" alt="CrossFire ZP"><div class="card-body"><span class="tag">متاح الآن</span><h3>CrossFire ZP</h3><p>اختار باقة الـ ZP المناسبة ليك.</p><label for="zpSelect">الباقة</label><select id="zpSelect"><option value="">اختار الباقة</option><option value="5k + 2.5k bonus">5k + 2.5k bonus</option><option value="10k + 5k bonus">10k + 5k bonus</option><option value="20k + 10k bonus">20k + 10k bonus</option><option value="50k + 25k bonus">50k + 25k bonus</option></select><div class="price-line"><strong id="zpPrice">السعر يحدد لاحقاً</strong><button class="add" id="addZp">أضف للسلة +</button></div></div></article>
+<article class="service-card"><img class="cover" src="assets/pubg.png" alt="PUBG Mobile"><div class="card-body"><span class="tag soon">قريباً</span><h3>PUBG Mobile</h3><p>خدمات ببجي موبايل</p><div class="coming">تتوفر قريبا</div></div></article>
+</div>
+<h3 class="subheading">تفعيل البرامج</h3><div class="software-grid" id="softwareGrid"></div>
+</section>
+<section id="offers" class="section slim"><span class="eyebrow">دايماً عندنا جديد</span><h2>العروض والكوبونات</h2><div class="offer-box"><div><h3>استنى عروض Edex Store</h3><p>تابعنا عشان توصلك أحدث العروض والكوبونات.</p></div><a class="secondary" href="https://www.facebook.com/profile.php?id=61583557232791&locale=ar_AR" target="_blank" rel="noopener">تابع صفحة فيسبوك ↗</a></div></section>
+<section id="reviews" class="section slim"><span class="eyebrow">رأيكم يهمنا</span><h2>تقييمات العملاء</h2><div class="review-box"><p>⭐ ⭐ ⭐ ⭐ ⭐</p><p>شاركنا رأيك بعد استلام طلبك على واتساب.</p><a class="secondary" href="https://wa.me/201227540023?text=%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B4%D8%A7%D8%B1%D9%83%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85%D9%8A%20%D9%84%D9%84%D9%85%D8%AA%D8%AC%D8%B1" target="_blank">أرسل تقييمك</a></div></section>
+<section id="faq" class="section slim"><span class="eyebrow">محتاج مساعدة؟</span><h2>الأسئلة الشائعة</h2><details><summary>إزاي أطلب خدمة؟</summary><p>اختار الخدمة والباقة، أضفها للسلة، واكتب بياناتك ثم أكد الطلب عبر واتساب.</p></details><details><summary>هل السعر ظاهر لكل الخدمات؟</summary><p>الأسعار التي لم يحددها صاحب المتجر ستظهر على أنها قيد التحديد.</p></details><details><summary>هل الطلب بيتبعت تلقائياً؟</summary><p>واتساب هيفتح برسالة مجهزة بتفاصيل الطلب، ولازم تضغط إرسال بنفسك.</p></details></section>
+</main>
+<footer><span>© 2026 Edex Store</span><div><a href="https://www.facebook.com/profile.php?id=61583557232791&locale=ar_AR" target="_blank">Facebook</a><a href="https://wa.me/201227540023" target="_blank">WhatsApp</a><button id="adminOpen" class="text-btn">إدارة المتجر</button></div></footer>
+<aside class="drawer" id="cartDrawer"><div class="drawer-head"><h2>سلة المشتريات</h2><button class="close" id="cartClose">✕</button></div><div id="cartItems" class="cart-items"><p class="empty">السلة فاضية حالياً.</p></div><div class="checkout"><label>اسمك</label><input id="customerName" placeholder="اكتب اسمك"><label>بيانات الحساب / الشحن</label><textarea id="customerData" placeholder="اكتب بيانات الطلب المطلوبة"></textarea><div class="total"><span>الإجمالي</span><b id="totalPrice">يحدد لاحقاً</b></div><button class="primary full" id="checkoutBtn">تأكيد الطلب عبر واتساب</button><small>سيتم فتح واتساب برسالة جاهزة، وتحتاج إلى الضغط على إرسال.</small></div></aside><div id="overlay" class="overlay"></div>
+<div class="modal" id="adminModal"><div class="drawer-head"><h2>إدارة الأسعار</h2><button class="close" id="adminClose">✕</button></div><p class="note">لوحة محلية على هذا الجهاز فقط. ليست لوحة دخول آمنة ولا تحفظ البيانات على سيرفر.</p><div id="priceEditor"></div><button class="primary full" id="savePrices">حفظ الأسعار على هذا الجهاز</button></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+</body></html>
