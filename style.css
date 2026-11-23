@@ -60,3 +60,67 @@ nav a,footer a{color:#fff}
 .topbar,footer{border-color:#e6532480}
 footer{color:#d0c4b8}
 .add:hover,.secondary:hover,.software button:hover,.cart-open:hover{box-shadow:0 0 14px #f5a62355}
+
+/* Edex Store: subtle pointer interaction + very soft gold/red neon */
+@media (hover:hover) and (pointer:fine) {
+  .service-card,.review-box,.offer-box,.software,.hero-photo,
+  .cart-open,.primary,.secondary,.add,.software button,
+  .section details,.brand-mark,.software .logo {
+    transition: transform .28s ease, box-shadow .28s ease,
+                border-color .28s ease, filter .28s ease;
+    will-change: transform;
+  }
+
+  .service-card:hover,.review-box:hover,.offer-box:hover,
+  .software:hover,.hero-photo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px #000b,
+                0 0 9px #ffd76a20,
+                0 0 13px #d7192d18;
+    border-color: #f5c451aa;
+  }
+
+  .software:hover .logo,.brand:hover .brand-mark {
+    transform: translateY(-2px) rotate(-4deg) scale(1.06);
+    filter: drop-shadow(0 0 5px #ffd76a55)
+            drop-shadow(0 0 5px #d7192d33);
+  }
+
+  .cart-open:hover,.primary:hover,.secondary:hover,.add:hover,
+  .software button:hover {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 0 8px #ffd76a35, 0 0 11px #d7192d25;
+  }
+
+  .section details:hover {
+    border-color: #ffd76a88;
+    box-shadow: 0 0 9px #ffd76a18, 0 0 10px #d7192d12;
+  }
+}
+
+/* Touch feedback for phones and tablets */
+@media (hover:none) {
+  .service-card,.review-box,.offer-box,.software,.hero-photo,
+  .cart-open,.primary,.secondary,.add,.software button,
+  .brand-mark,.software .logo {
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .service-card:active,.software:active,.cart-open:active,
+  .primary:active,.secondary:active,.add:active,
+  .software button:active {
+    transform: scale(.985);
+    box-shadow: 0 0 8px #ffd76a30, 0 0 9px #d7192d20;
+  }
+  .software:active .logo,.brand:active .brand-mark {
+    transform: scale(1.05) rotate(-3deg);
+  }
+}
+
+/* Respect reduced-motion accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,.review-box,.offer-box,.software,.hero-photo,
+  .cart-open,.primary,.secondary,.add,.software button,
+  .section details,.brand-mark,.software .logo {
+    transition: none !important;
+  }
+}
