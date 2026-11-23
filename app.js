@@ -7,7 +7,25 @@ const software=[['CapCut','https://cdn.simpleicons.org/capcut/ffffff'],['Adobe',
 const defaults={zp:{'5k + 2.5k bonus':'','10k + 5k bonus':'','20k + 10k bonus':'','50k + 25k bonus':''},apps:{CapCut:'',Adobe:'',Canva:'',Gemini:''}};
 let prices={...defaults};try{const saved=JSON.parse(localStorage.getItem('edexPrices'));if(saved)prices={zp:{...defaults.zp,...saved.zp},apps:{...defaults.apps,...saved.apps}}}catch{}
 let cart=[];const $=id=>document.getElementById(id);const money=v=>v!==''&&Number.isFinite(Number(v))?`${Number(v).toLocaleString('en-US')} ج.م`:'السعر يحدد لاحقاً';
-function renderApps(){ $('softwareGrid').innerHTML=software.map(([name,logo])=>`<article class="software"><div class="logo"><img src="${logo}" alt="شعار ${name}" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('logo-fallback')"></div><div class="app-content"><h4>${name}</h4><p>${money(prices.apps[name])}</p><button data-app="${name}">أضف للسلة +</button></div></article>`).join('');document.querySelectorAll('[data-app]').forEach(b=>b.onclick=()=>addItem(b.dataset.app,'تفعيل برنامج',prices.apps[b.dataset.app]));}
+function renderApps(){
+  $('softwareGrid').innerHTML=software.map(([name,logo])=>`<article class="software"><div class="logo"><img src="${logo}" alt="شعار ${name}" loading="lazy"></div><div class="app-content"><h4>${name}</h4><p>${money(prices.apps[name])}</p><button data-app="${name}">أضف للسلة +</button></div></article>`).join('');
+  document.querySelectorAll('.software .logo img').forEach(img=>{
+    const name=img.alt.replace('شعار ','');
+    const fallback={CapCut:'CC',Adobe:'A',Canva:'C',Gemini:'✦'}[name]||name.charAt(0);
+    const showFallback=()=>{
+      if(!img.isConnected)return;
+      const mark=document.createElement('span');
+      mark.className='logo-fallback-mark';
+      mark.textContent=fallback;
+      mark.setAttribute('aria-label',`شعار ${name}`);
+      mark.style.cssText='display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:48px;font-size:27px;font-weight:800;line-height:1;color:#fff;border-radius:12px;background:linear-gradient(135deg,#242424,#8b1e24);';
+      img.replaceWith(mark);
+    };
+    img.addEventListener('error',showFallback,{once:true});
+    if(img.complete&&img.naturalWidth===0)showFallback();
+  });
+  document.querySelectorAll('[data-app]').forEach(b=>b.onclick=()=>addItem(b.dataset.app,'تفعيل برنامج',prices.apps[b.dataset.app]));
+}
 function addItem(name,detail,price){cart.push({name,detail,price:price===''?null:Number(price)});renderCart();openCart()}
 function renderCart(){ $('cartCount').textContent=cart.length;$('cartItems').innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-row"><div><b>${x.name}</b><div class="note">${x.detail}</div></div><span>${x.price===null?'السعر يحدد لاحقاً':money(x.price)}</span><button data-remove="${i}">حذف</button></div>`).join(''):'<p class="empty">السلة فاضية حالياً.</p>';document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.remove,1);renderCart()});const total=cart.reduce((s,x)=>s+(x.price||0),0);$('totalPrice').textContent=cart.some(x=>x.price===null)?'يحدد لاحقاً':money(total)}
 function openCart(){$('cartDrawer').classList.add('show');$('overlay').classList.add('show')}function closeAll(){$('cartDrawer').classList.remove('show');$('adminModal').classList.remove('show');$('overlay').classList.remove('show')}
